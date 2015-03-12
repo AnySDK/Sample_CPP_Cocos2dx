@@ -73,18 +73,11 @@ void PluginChannel::loadPlugins()
      * appKey、appSecret、privateKey不能使用Sample中的值，需要从打包工具中游戏管理界面获取，替换
      * oauthLoginServer参数是游戏服务提供的用来做登陆验证转发的接口地址。
      */
-#define qudao_info
-#ifdef qudao_info
-    std::string appKey = "0BA3CDB8-5152-BCDB-BFBD-1D9520D5917B";
-    std::string appSecret = "c488d12e8905304844eed1a508f937a3";
-    std::string privateKey = "277426D8FC86325EFD885BA1F6A76280";
-    std::string oauthLoginServer = "http://oauth.qudao.info/api/OauthLoginDemo/Login.php";
-#else
+
     std::string appKey = "96418BB3-2DD9-4ADC-3FF9-E0F18857FD3E";
     std::string appSecret = "5c11e736bb3bca886effb70886a85830";
     std::string privateKey = "ACB121D6FF9D7CEAAACE3960ADF4A9CE";
     std::string oauthLoginServer = "http://oauth.anysdk.com/api/OauthLoginDemo/Login.php";
-#endif
     
     AgentManager::getInstance()->init(appKey,appSecret,privateKey,oauthLoginServer);
     
