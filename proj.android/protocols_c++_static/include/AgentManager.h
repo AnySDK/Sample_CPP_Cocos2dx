@@ -16,17 +16,16 @@
 #include <map>
 #include <string>
 namespace anysdk { namespace framework {
-#define ASF_ANDROID_CPP_VERSION "<<<<<ANYSDK_FRAMEWORK_VERSION>>>>>@ANDROID_CPP_1.5.0"
-typedef enum
-{
-	kAdsType = 1,
-	kAnalyticsType = 2,
-	kIAPType = 3,
-	kShareType = 4,
-	kUserType = 5,
-	kSocialType = 6,
-	kPushType = 7,
-}AnySDKType;
+/** @brief Plugin_type enum, with inline docs */
+typedef enum {
+    kPluginAds = 16,/**< enum value kPluginAds. */
+    kPluginAnalytics = 1,/**< enum value kPluginAnalytics. */
+    kPluginIAP = 8,/**< enum value kPluginIAP. */
+    kPluginShare = 2,/**< enum value kPluginShare. */
+    kPluginUser = 32,/**< enum value kPluginUser. */
+    kPluginSocial = 4,/**< enum value kPluginSocial. */
+    kPluginPush = 64,/**< enum value kPluginPush. */
+}Plugin_type;
 /**   
  *  @class  AgentManager  
  */
@@ -57,12 +56,22 @@ public:
     /**
      @brief load the plugins
      */
-    void loadALLPlugin();
+    CC_DEPRECATED_ATTRIBUTE void loadALLPlugin();
     /**
      @brief unload the plugins
      */
-    void unloadALLPlugin();
+    CC_DEPRECATED_ATTRIBUTE void unloadALLPlugin();
     
+    /**
+     @brief load the plugins
+    */
+    void loadAllPlugins();
+
+    /**
+     @brief unload the plugins
+    */
+    void unloadAllPlugins();
+
     /**
      @brief Get Analytics plugin
      @return  if Analytics plugin exist ,return value is Analytics plugin.
@@ -151,7 +160,7 @@ public:
 
 protected:
     void setDebugMode(bool flag);
-    std::string getFileData(const char* pFileName);
+    std::string getSupportPlugin();
     void loadPlugin(const char* nodeName,int type);
     
 

@@ -21,6 +21,7 @@ typedef enum
     kShareFail,/**< enum value is callback of failing to share . */
     kShareCancel,/**< enum value is callback of canceling to share . */
     kShareNetworkError,/**< enum value is callback of network error . */
+    kShareExtension = 10000 /**< enum value is  extension code . */
 } ShareResultCode;
 /**   
  *@class  ShareResultListener

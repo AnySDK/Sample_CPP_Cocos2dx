@@ -14,6 +14,7 @@ namespace anysdk { namespace framework {
 typedef enum
 {
 	kPushReceiveMessage = 0,/**value is callback of Receiving Message . */
+    kPushExtensionCode = 60000 /**< enum value is  extension code . */
 
 
 } PushActionResultCode;

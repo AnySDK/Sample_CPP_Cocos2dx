@@ -30,7 +30,8 @@ typedef enum
 
     kSocialSignOutSucceed,/**< enum value is callback of succeeding to login. */
     kSocialSignOutFail,/**< enum value is callback of failing to  login. */
-
+    kSocialGetGameFriends,/**< enum value is callback of getGameFriends. */
+    kSocialExtensionCode = 20000 /**< enum value is  extension code . */
 
 } SocialRetCode;
 /**   

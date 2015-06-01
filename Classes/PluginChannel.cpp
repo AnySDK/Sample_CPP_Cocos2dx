@@ -82,12 +82,11 @@ void PluginChannel::loadPlugins()
     AgentManager::getInstance()->init(appKey,appSecret,privateKey,oauthLoginServer);
     
     //使用框架中代理类进行插件初始化
-    AgentManager::getInstance()->loadALLPlugin();
+    AgentManager::getInstance()->loadAllPlugins();
     
     //对用户系统设置监听类
     if(AgentManager::getInstance()->getUserPlugin())
     {
-        AgentManager::getInstance()->getUserPlugin()->setDebugMode(true);
         AgentManager::getInstance()->getUserPlugin()->setActionListener(this);
     }
     
@@ -97,7 +96,6 @@ void PluginChannel::loadPlugins()
     std::map<std::string , ProtocolIAP*>::iterator iter;
     for(iter = _pluginsIAPMap->begin(); iter != _pluginsIAPMap->end(); iter++)
     {
-        (iter->second)->setDebugMode(true);
         (iter->second)->setResultListener(this);
     }
     
@@ -112,7 +110,7 @@ void PluginChannel::loadPlugins()
 void PluginChannel::unloadPlugins()
 {
     printf("Unload plugins invoked\n");
-    AgentManager::getInstance()->unloadALLPlugin();
+    AgentManager::getInstance()->unloadAllPlugins();
     Analytics::getInstance()->logTimedEventEnd("Unload");
 }
 
@@ -263,7 +261,6 @@ void PluginChannel::pay()
         Analytics::getInstance()->logEvent("pay", productInfo);
         if(_pluginsIAPMap->size() == 1)
         {
-            (it->second)->setDebugMode(true);
             (it->second)->payForProduct(productInfo);
         }
         else if(_pluginsIAPMap->size() > 1)

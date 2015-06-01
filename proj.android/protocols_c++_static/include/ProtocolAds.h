@@ -25,11 +25,10 @@ typedef enum
     kPointsSpendSucceed,       /**< enum the callback: the points spend succeed. */
     kPointsSpendFailed,        /**< enum the callback: the points spend failed. */
 
-
-
     kNetworkError,              /**< enum the callback of Network error at center. */
     kUnknownError,              /**< enum the callback of Unknown error. */
     kOfferWallOnPointsChanged,   /**< enum the callback of Changing the point of offerwall. */
+    kAdsExtension = 40000 /**< enum value is  extension code . */
 } AdsResultCode;
 /** @brief AdsPos enum, with inline docs */
 typedef enum {
@@ -59,13 +58,6 @@ public:
 	 *@param the information of callback
      */
     virtual void onAdsResult(AdsResultCode code, const char* msg) = 0;
-    
-    /**
-    @brief Player get points from advertisement(For example: Tapjoy)
-    @param points The point number player has got.
-    @param pAdsPlugin  The plugin which the player get points. Used to spend the points.
-    */
-    virtual void onPlayerGetPoints(ProtocolAds* pAdsPlugin, int points) {}
 };
 
 class ProtocolAds : public PluginProtocol

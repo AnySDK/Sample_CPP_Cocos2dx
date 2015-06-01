@@ -6,6 +6,14 @@
 #include "PluginParam.h"
 #include <vector>
 
+#if defined(__GNUC__) && ((__GNUC__ >= 4) || ((__GNUC__ == 3) && (__GNUC_MINOR__ >= 1)))
+#define CC_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
+#elif _MSC_VER >= 1400 //vs 2005 or higher
+#define CC_DEPRECATED_ATTRIBUTE __declspec(deprecated)
+#else
+#define CC_DEPRECATED_ATTRIBUTE
+#endif
+
 namespace anysdk { namespace framework {
 
 /**
@@ -42,7 +50,7 @@ public:
      *@brief switch debug plug-in on/off
      *@param the value of on/off
     */
-	virtual void setDebugMode(bool bDebug) = 0 ;
+	CC_DEPRECATED_ATTRIBUTE virtual void setDebugMode(bool bDebug) = 0 ;
 
     /**
      *@brief methods for reflections

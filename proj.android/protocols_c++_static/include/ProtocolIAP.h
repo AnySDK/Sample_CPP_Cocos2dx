@@ -28,6 +28,7 @@ typedef enum
 	kPayInitFail,/**< enum value is callback of failing to init sdk . */
 	kPayNowPaying,/**< enum value is callback of paying now . */
 	kPayRechargeSuccess,/**< enum value is callback of  succeeding in recharging. */
+    kPayExtension = 30000 /**< enum value is  extension code . */
 } PayResultCode;
 /** @brief RequestResultCode enum, with inline docs */
 typedef enum

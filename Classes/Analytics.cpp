@@ -14,11 +14,6 @@ Analytics* Analytics::_pInstance = NULL;
 
 Analytics::Analytics()
 {
-    if(AgentManager::getInstance()->getAnalyticsPlugin())
-    {
-        AgentManager::getInstance()->getAnalyticsPlugin()->setDebugMode(true);
-        printf("analytics, set debug mode true!\n");
-    }
 }
 
 Analytics::~Analytics()

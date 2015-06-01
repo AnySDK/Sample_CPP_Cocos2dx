@@ -10,11 +10,12 @@
    <TextView
       android:id="@+id/username"
       android:layout_height="50dp"
-      android:layout_width="50dp"
+      android:layout_width="80dp"
       android:text="@string/plugin_login_account"
       android:layout_alignParentLeft="true"
       android:layout_alignParentTop="true"
-      android:textSize="20sp" 
+      android:textSize="18sp"
+      android:gravity="center" 
       android:textColor="#ffffff"/>
 
    <EditText
@@ -27,12 +28,13 @@
    
     <TextView
         android:id="@+id/password"
-        android:layout_width="50dp"
+        android:layout_width="80dp"
         android:layout_height="50dp"
+        android:gravity="center"
         android:layout_alignParentLeft="true"
         android:text="@string/plugin_login_password" 
         android:layout_below="@id/username"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textColor="#ffffff"/>
 
     <EditText

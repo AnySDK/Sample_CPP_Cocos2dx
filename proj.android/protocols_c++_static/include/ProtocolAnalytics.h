@@ -20,7 +20,6 @@ typedef enum {
 	SINA_WEIBO,/**< enum value is sineweibo type. */
 	TENCENT_WEIBO,/**< enum value is tecentweibo type */
 	QQ,/**< enum value is qq type */
-	QQ_WEIBO,/**< enum value is qqweibo type. */
 	ND91,/**< enum value is nd91 type. */
 } AccountType;
 typedef enum {

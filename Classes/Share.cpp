@@ -30,7 +30,6 @@ Share* Share::getInstance()
     if (_pInstance == NULL) {
         _pInstance = new Share();
         _pInstance->setListener();
-        AgentManager::getInstance()->getSharePlugin()->setDebugMode(true);
     }
     return _pInstance;
 }

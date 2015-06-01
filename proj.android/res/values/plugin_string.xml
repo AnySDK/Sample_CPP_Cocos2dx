@@ -21,6 +21,8 @@
     <string name="plugin_logout">登出</string>
     <string name="plugin_submitLoginGameRole">提交角色信息</string>
     <string name="plugin_tips">测试模式,不能用于渠道发布</string>
+    <string name="plugin_waiting">请稍等</string>
+    <string name="plugin_data">数据通信中...</string>
     
     
 </resources>

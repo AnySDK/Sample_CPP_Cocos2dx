@@ -30,7 +30,6 @@ Social* Social::getInstance()
     if (_pInstance == NULL) {
         _pInstance = new Social();
         _pInstance->setListener();
-        AgentManager::getInstance()->getSocialPlugin()->setDebugMode(true);
     }
     return _pInstance;
 }
