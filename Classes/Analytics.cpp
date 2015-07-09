@@ -201,7 +201,7 @@ void Analytics::onPurchase()
         paramMap["Item_Id"] = "123456";
         paramMap["Item_Type"] = "test";
         paramMap["Item_Count"] = Analytics::ConvertToString(2);
-        paramMap["Vitural_Currency"] = "1";
+        paramMap["Virtual_Currency"] = "1";
         paramMap["Currency_Type"] = AgentManager::getInstance()->getChannelId();
         PluginParam data(paramMap);
         plugin->callFuncWithParam("onPurchase",&data, NULL);
