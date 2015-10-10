@@ -39,7 +39,11 @@ public class AppActivity extends Cocos2dxActivity {
     {
         super.onCreate(savedState);
         PluginWrapper.init(this); // for plugins
+<<<<<<< Updated upstream
         PluginWrapper.setGLSurfaceView(Cocos2dxGLSurfaceView.getInstance());
+=======
+        nativeInitPlugins();
+>>>>>>> Stashed changes
     }
         
     @Override
@@ -83,4 +87,5 @@ public class AppActivity extends Cocos2dxActivity {
 		super.onRestart();
 		PluginWrapper.onRestart();
 	}
+	public static native void nativeInitPlugins () ;
 }

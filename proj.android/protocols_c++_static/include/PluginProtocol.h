@@ -23,7 +23,8 @@ namespace anysdk { namespace framework {
 class PluginProtocol
 {
 public:
-
+    virtual ~PluginProtocol() {};
+    
     /**
      *@brief set plugin name
      *@param the name of plugin
@@ -126,6 +127,14 @@ public:
      *@return float
      */
 	virtual float callFloatFuncWithParam(const char* funcName, std::vector<PluginParam*> params) = 0 ;
+
+    /**
+     @brief Check function the plugin support or not
+     @param the name of plugin
+     @return if the function support ,return true
+     	 	 else retur false
+     */
+    virtual bool isFunctionSupported(std::string functionName) = 0 ;
 
 
 };

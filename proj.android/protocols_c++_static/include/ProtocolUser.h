@@ -112,13 +112,6 @@ public:
     virtual  UserActionListener* getActionListener() = 0 ;
 
     /**
-     @brief Check function the plugin support or not
-     @param the name of plugin
-     @return if the function support ,return true
-     	 	 else retur false
-     */
-    virtual bool isFunctionSupported(std::string functionName) = 0 ;
-    /**
      @brief get plugin id
      @return the plugin id
      */

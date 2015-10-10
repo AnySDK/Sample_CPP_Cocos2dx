@@ -13,6 +13,9 @@
 #include "ProtocolSocial.h"
 #include "ProtocolUser.h"
 #include "ProtocolPush.h"
+#include "ProtocolCrash.h"
+#include "ProtocolREC.h"
+#include "ProtocolCustom.h"
 #include <map>
 #include <string>
 namespace anysdk { namespace framework {
@@ -25,6 +28,9 @@ typedef enum {
     kPluginUser = 32,/**< enum value kPluginUser. */
     kPluginSocial = 4,/**< enum value kPluginSocial. */
     kPluginPush = 64,/**< enum value kPluginPush. */
+    kPluginCrash = 128,/**< enum value kPluginCrash. */
+    kPluginCustom = 256,/**< enum value kPluginCustom. */
+    kPluginREC = 512,/**< enum value kPluginREC. */
 }Plugin_type;
 /**   
  *  @class  AgentManager  
@@ -122,6 +128,28 @@ public:
     ProtocolPush* getPushPlugin(){return _pPush;};
 
     /**
+     @brief Get Crash plugin
+     @return  if Crash plugin exist ,return value is Crash plugin.
+         	 else return value is null pointer.
+     */
+    ProtocolCrash* getCrashPlugin(){return _pCrash;};
+
+    /**
+     @brief Get Custom plugin
+     @return  if Crash plugin exist ,return value is Custom plugin.
+            else return value is null pointer.
+     */
+    ProtocolCustom* getCustomPlugin(){return _pCustom;};
+
+
+    /**
+     @brief Get REC plugin
+     @return  if REC plugin exist ,return value is REC plugin.
+             else return value is null pointer.
+    */
+    ProtocolREC* getRECPlugin(){return _pREC;};
+
+    /**
      @brief Get channel ID
      @return  return value is channel ID.
      */
@@ -188,6 +216,15 @@ private:
     
     // Push plugins
     ProtocolPush* _pPush;
+
+    // Crash plugins
+    ProtocolCrash* _pCrash;
+
+    // Custom plugins
+    ProtocolCustom* _pCustom;
+
+    // REC plugins
+    ProtocolREC* _pREC;
 
     bool bIsAnaylticsEnabled;
 
