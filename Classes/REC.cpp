@@ -177,6 +177,12 @@ void REC::onRECResult(RECResultCode ret, const char* msg)
         case kRECResumeRecording://恢复录制
             printf("kRECResumeRecording \n");
             break;
+        case kRECEnterSDKPage://进入SDK页面
+            printf("kRECEnterSDKPage \n");
+            break;
+        case kRECQuitSDKPage://退出SDK页面
+            printf("kRECQuitSDKPage \n");
+            break;
         case kRECShareSuccess://视频分享成功
             printf("kRECShareSuccess \n");
          cocos2d::Application::getInstance()->applicationDidEnterBackground();
