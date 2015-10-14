@@ -15,13 +15,16 @@ typedef std::map<std::string, std::string> TVideoInfo;
 /** @brief RECResultCode enum, with inline docs */
 typedef enum 
 {
-	kRECInitSuccess = 0,
-	kRECInitFail,
-	kRECStartRecording,
-	kRECStopRecording,
-	kRECPauseRecording,
-	kRECResumeRecording,
-
+	kRECInitSuccess = 0,/**< enum value is callback of succeeding in initing sdk . */
+	kRECInitFail,/**< enum  value is callback of failing to init sdk. */
+	kRECStartRecording,/**< enum  value is callback of starting to record. */
+	kRECStopRecording,/**< enum  value is callback of stoping to record. */
+	kRECPauseRecording,/**< enum  value is callback of pausing to record. */
+	kRECResumeRecording,/**< enum  value is callback of resuming to record. */
+	kRECEnterSDKPage,/**< enum  value is callback of entering SDK`s page. */
+	kRECQuitSDKPage,/**< enum  value is callback of  quiting SDK`s page. */
+	kRECShareSuccess,/**< enum  value is callback of succeeding in sharing. */
+	kRECShareFail,/**< enum  value is callback of failing to share. */
     kRECExtension = 90000 /**< enum value is  extension code . */
 } RECResultCode;
 /**   
@@ -72,7 +75,18 @@ public:
     virtual void setResultListener(RECResultListener* pListener) = 0;
 
     virtual RECResultListener* getRECListener() = 0;
+#ifndef AS_NO_USING_CPP11
+	typedef std::function<void(int, std::string&)> ProtocolRECCallback;
+    /**
+     @brief set REC callback function
+     */
+    virtual void setCallback(const ProtocolRECCallback &cb) = 0;
 
+    /**
+     @brief get REC callback function
+     */
+    virtual ProtocolRECCallback& getCallback() = 0;
+#endif
 
 };
 

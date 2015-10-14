@@ -6,6 +6,7 @@
 #include "PluginProtocol.h"
 #include <map>
 #include <string>
+#include <functional>
 
 namespace anysdk { namespace framework {
 /// \typedef std::map<std::string, std::string> TShareDeveloperInfo
@@ -65,7 +66,19 @@ public:
     virtual void setResultListener(ShareResultListener* pListener) = 0;
 
     virtual ShareResultListener* getShareListener() = 0;
+    
+#ifndef AS_NO_USING_CPP11
+	typedef std::function<void(int, std::string&)> ProtocolShareCallback;
+    /**
+     @brief set share callback function
+     */
+    virtual void setCallback(const ProtocolShareCallback &cb) = 0;
 
+    /**
+     @brief get share callback function
+     */
+    virtual ProtocolShareCallback& getCallback() = 0;
+#endif
 };
 
 }} // namespace anysdk { namespace framework {

@@ -21,16 +21,16 @@
 namespace anysdk { namespace framework {
 /** @brief Plugin_type enum, with inline docs */
 typedef enum {
-    kPluginAds = 16,/**< enum value kPluginAds. */
-    kPluginAnalytics = 1,/**< enum value kPluginAnalytics. */
-    kPluginIAP = 8,/**< enum value kPluginIAP. */
-    kPluginShare = 2,/**< enum value kPluginShare. */
-    kPluginUser = 32,/**< enum value kPluginUser. */
-    kPluginSocial = 4,/**< enum value kPluginSocial. */
-    kPluginPush = 64,/**< enum value kPluginPush. */
-    kPluginCrash = 128,/**< enum value kPluginCrash. */
-    kPluginCustom = 256,/**< enum value kPluginCustom. */
-    kPluginREC = 512,/**< enum value kPluginREC. */
+    kPluginAds = 16,/**< enum value is  the type of Ads. */
+    kPluginAnalytics = 1,/**< enum value is  the type of Analytics. */
+    kPluginIAP = 8,/**< enum value is  the type of IAP. */
+    kPluginShare = 2,/**< enum value is  the type of Share. */
+    kPluginUser = 32,/**< enum value is  the type of User. */
+    kPluginSocial = 4,/**< enum value is  the type of Social. */
+    kPluginPush = 64,/**< enum value is  the type of Push. */
+    kPluginCrash = 128,/**< enum value is  the type of Crash. */
+    kPluginCustom = 256,/**< enum value is  the type of Custom. */
+    kPluginREC = 512,/**< enum value is  the type of REC. */
 }Plugin_type;
 /**   
  *  @class  AgentManager  
