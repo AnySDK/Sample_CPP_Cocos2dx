@@ -6,7 +6,6 @@
 #include "PluginProtocol.h"
 #include <map>
 #include <string>
-#include <functional>
 
 namespace anysdk { namespace framework {
 /// \typedef std::map<std::string, std::string> TShareDeveloperInfo
@@ -54,8 +53,7 @@ public:
             SharedText                	The text need to share
             SharedImagePath				The full path of image file need to share (optinal)
     @warning For different plugin, the parameter should have other keys to share.
-             Look at the manual of plugins.
-    */
+             Look at the manual of plugins.    */
     virtual void share(TShareInfo info) = 0;
 
     /**
@@ -66,19 +64,7 @@ public:
     virtual void setResultListener(ShareResultListener* pListener) = 0;
 
     virtual ShareResultListener* getShareListener() = 0;
-    
-#ifndef AS_NO_USING_CPP11
-	typedef std::function<void(int, std::string&)> ProtocolShareCallback;
-    /**
-     @brief set share callback function
-     */
-    virtual void setCallback(const ProtocolShareCallback &cb) = 0;
 
-    /**
-     @brief get share callback function
-     */
-    virtual ProtocolShareCallback& getCallback() = 0;
-#endif
 };
 
 }} // namespace anysdk { namespace framework {

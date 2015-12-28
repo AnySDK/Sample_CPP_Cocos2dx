@@ -6,7 +6,6 @@
 #include "PluginProtocol.h"
 #include <map>
 #include <string>
-#include <functional>
 
 namespace anysdk { namespace framework {
 /// \typedef std::map<std::string, std::string> TSocialDeveloperInfo
@@ -99,19 +98,6 @@ public:
      @return the listener
      */
     virtual SocialListener* getListener() = 0;
-#ifndef AS_NO_USING_CPP11
-
-	typedef std::function<void(int, std::string&)> ProtocolSocialCallback;
-    /**
-     @brief set social callback function
-     */
-    virtual void setCallback(const ProtocolSocialCallback &cb) = 0;
-
-    /**
-     @brief get social callback function
-     */
-    virtual ProtocolSocialCallback& getCallback() = 0;
-#endif
 };
 
 }} // namespace anysdk { namespace framework {

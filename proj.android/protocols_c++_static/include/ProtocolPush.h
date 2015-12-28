@@ -7,7 +7,6 @@
 #include <map>
 #include <list>
 #include <string>
-#include <functional>
 using namespace std;
 
 namespace anysdk { namespace framework {
@@ -96,18 +95,6 @@ public:
      @return the listener
      */
     virtual  PushActionListener* getActionListener() = 0 ;
-#ifndef AS_NO_USING_CPP11
-	typedef std::function<void(int, std::string&)> ProtocolPushCallback;
-    /**
-     @brief set push callback function
-     */
-    virtual void setCallback(const ProtocolPushCallback &cb) = 0;
-
-    /**
-     @brief get push callback function
-     */
-    virtual ProtocolPushCallback& getCallback() = 0;
-#endif
 
 
 };

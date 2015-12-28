@@ -55,7 +55,7 @@ public:
     @param the appSecret of anysdk
     @param the privateKey of anysdk
     @param the url of oauthLoginServer
-    @warning Must invoke this interface before loadALLPlugin
+    @warning Must invoke this interface before loadAllPlugins
     */
     void init(std::string appKey,std::string appSecret,std::string privateKey,std::string oauthLoginServer);
 
@@ -190,6 +190,7 @@ protected:
     void setDebugMode(bool flag);
     std::string getSupportPlugin();
     void loadPlugin(const char* nodeName,int type);
+    void release();
     
 
 private:

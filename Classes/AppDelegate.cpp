@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
+#include "PluginChannel.h"
 
 USING_NS_CC;
 
@@ -42,6 +43,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // run
     director->runWithScene(scene);
+    PluginChannel::getInstance()->loadPlugins();
 
     return true;
 }

@@ -6,7 +6,6 @@
 #include "PluginProtocol.h"
 #include <map>
 #include <string>
-#include <functional>
 
 namespace anysdk { namespace framework {
 /// \typedef std::map<std::string, std::string> TAdsDeveloperInfo
@@ -120,18 +119,6 @@ public:
      	 	 else retur false
      */
     virtual bool isAdTypeSupported(AdsType adType) = 0;
-#ifndef AS_NO_USING_CPP11
-	typedef std::function<void(int, std::string&)> ProtocolAdsCallback;
-    /**
-     @brief set Ads callback function
-     */
-    virtual void setCallback(const ProtocolAdsCallback &cb) = 0;
-
-    /**
-     @brief get Ads callback function
-     */
-    virtual ProtocolAdsCallback& getCallback() = 0;
-#endif
 
 };
 

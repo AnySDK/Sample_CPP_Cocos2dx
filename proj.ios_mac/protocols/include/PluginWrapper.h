@@ -19,9 +19,6 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application ;
 - (void)applicationWillEnterForeground:(UIApplication *)application ;
 
-- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window;
-
-
 //about iap system
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation ;
 

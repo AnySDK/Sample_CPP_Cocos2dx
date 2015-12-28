@@ -6,7 +6,6 @@
 #include "PluginProtocol.h"
 #include <map>
 #include <string>
-#include <functional>
 
 namespace anysdk { namespace framework {
 typedef enum 
@@ -44,19 +43,6 @@ public:
 
     virtual CustomResultListener* getCustomListener() = 0;
 
-#ifndef AS_NO_USING_CPP11
-	typedef std::function<void(int, std::string&)> ProtocolCustomCallback;
-
-    /**
-     @brief set custom callback function
-     */
-    virtual void setCallback(const ProtocolCustomCallback &cb) = 0;
-
-    /**
-     @brief get custom callback function
-     */
-    virtual ProtocolCustomCallback& getCallback() = 0;
-#endif
 };
 
 }} // namespace anysdk { namespace framework {

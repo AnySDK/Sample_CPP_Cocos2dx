@@ -6,7 +6,6 @@
 #include "PluginProtocol.h"
 #include <map>
 #include <string>
-#include <functional>
 
 namespace anysdk { namespace framework {
 /// \typedef std::map<std::string, std::string> TIAPDeveloperInfo
@@ -110,19 +109,6 @@ public:
 	}
     static bool _paying;
     
-#ifndef AS_NO_USING_CPP11
-
-	typedef std::function<void(int, std::string&)> ProtocolIAPCallback;
-    /**
-     @brief set iap callback function
-     */
-    virtual void setCallback(const ProtocolIAPCallback &cb) = 0;
-
-    /**
-     @brief get iap callback function
-     */
-    virtual ProtocolIAPCallback& getCallback() = 0;
-#endif
 
 
 };

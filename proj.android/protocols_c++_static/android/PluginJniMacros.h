@@ -123,7 +123,7 @@ if (0 == nParamNum)                                                             
         break;                                                                                                \
     case PluginParam::kParamTypeString:                                                                       \
         {                                                                                                     \
-            jstring jstr = PluginUtils::getEnv()->NewStringUTF(pRetParam->getStringValue());                  \
+            jstring jstr = PluginJniHelper::newStringUTF(PluginUtils::getEnv(), pRetParam->getStringValue());                  \
             paramCode = "(Ljava/lang/String;)";                                                               \
             paramCode.append(jRetCode);                                                                      \
             ret = PluginUtils::callJava##retCode##FuncWithName_oneParam(this, funcName, paramCode.c_str(), jstr);    \

@@ -6,7 +6,6 @@
 #include "PluginProtocol.h"
 #include <map>
 #include <string>
-#include <functional>
 
 namespace anysdk { namespace framework {
 
@@ -75,18 +74,7 @@ public:
     virtual void setResultListener(RECResultListener* pListener) = 0;
 
     virtual RECResultListener* getRECListener() = 0;
-#ifndef AS_NO_USING_CPP11
-	typedef std::function<void(int, std::string&)> ProtocolRECCallback;
-    /**
-     @brief set REC callback function
-     */
-    virtual void setCallback(const ProtocolRECCallback &cb) = 0;
 
-    /**
-     @brief get REC callback function
-     */
-    virtual ProtocolRECCallback& getCallback() = 0;
-#endif
 
 };
 
