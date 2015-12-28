@@ -8,7 +8,6 @@ class Statistics
 {
 public:
 	static void initInfo();
-	static void onActionResult(std::string pluginName,int code,std::string msg);
 	static void createPlugin(std::string pluginName, int pluginType);
 	static void callFunction(std::string pluginName, std::string functionName);
 

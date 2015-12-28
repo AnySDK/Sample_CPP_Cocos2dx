@@ -7,10 +7,12 @@
 #include "Share.h"
 #include "Social.h"
 #include "Analytics.h"
+#include "Crash.h"
+#include "REC.h"
 #include "PluginChannel.h"
 
 
-static std::string base_menu[] = {"User System", "IAP System", "Share System", "Ads System", "Social System", "Push System", "Analytics System"};
+static std::string base_menu[] = {"User System", "IAP System", "Share System", "Ads System", "Social System", "Push System", "Analytics System","Crash System", "REC System"};
 static int g_testCount = sizeof(base_menu) / sizeof(base_menu[0]);
 
 static std::string user_menu[] = {"login", "logout", "enterPlatform", "showToolbar", "hideToolbar", "accountSwitch", "realNameRegister", "antiAddictionQuery", "submitLoginGameRole"};
@@ -45,6 +47,12 @@ static int push_count = sizeof(push_menu) / sizeof(push_menu[0]);
 
 static std::string social_menu[]= {"submit score", "show leaderboard", "unlock achievement", "show achievements"};
 static int social_count = sizeof(social_menu) / sizeof(social_menu[0]);
+
+static std::string rec_menu[]= {"start record", "stop record", "share", "pause Record", "resume Record", "showToolBar" , "hideToolBar" ,"showVideoCenter", "enterPlatform"};
+static int rec_count = sizeof(rec_menu) / sizeof(rec_menu[0]);
+
+static std::string crash_menu[]= {"setUserIdentifier", "reportException", "leaveBreadcrumb"};
+static int crash_count = sizeof(crash_menu) / sizeof(crash_menu[0]);
 
 static Views* _instance = NULL;
 
@@ -83,7 +91,7 @@ bool Views::init()
     addChild(_secMenu);
 
     //init anysdk
-    PluginChannel::getInstance()->loadPlugins();
+    //PluginChannel::getInstance()->loadPlugins();
     
 	return true;
 }
@@ -92,8 +100,13 @@ void Views::onClick(Ref* nd)
 {
     int idx = ((Node*)nd)->getTag();
     CCLOG("click:%d", idx);
-    
-    if (idx>=ANALYTICS_LEVEL) {
+    if (idx>=REC_LEVEL) {
+        onRECOperation(idx-REC_LEVEL);
+    }
+    else if (idx>=CRASH_LEVEL) {
+        onCrashOperation(idx-CRASH_LEVEL);
+    }
+    else if (idx>=ANALYTICS_LEVEL) {
         onAnalyticsOperation(idx-ANALYTICS_LEVEL);
     }
     else if (idx>=PUSH_LEVEL) {
@@ -144,6 +157,12 @@ void Views::switchView(int idx)
             break;
         case ANALYTICS_SYSTEM:
             addCurrentView(analytics_count,ANALYTICS_LEVEL,analytics_menu);
+            break;
+        case REC_SYSTEM:
+            addCurrentView(rec_count,REC_LEVEL,rec_menu);
+            break;
+        case CRASH_SYSTEM:
+            addCurrentView(crash_count,CRASH_LEVEL,crash_menu);
             break;
     }
 }
@@ -481,5 +500,71 @@ void Views::onOfferwallViews(int idx)
             _ads->hideAds(AD_TYPE_OFFERWALL, 3);
             break;
     }
+}
+
+void Views::onCrashOperation(int idx)
+{
+    CCLOG("onCrashOperation:%d", idx);
+    Crash* _crash = Crash::getInstance();
+    if (_crash == NULL) {
+        return;
+    }
+    
+    switch (idx) {
+        case ACTION_SET_USER_IDENTIFIFER:
+            _crash->setUserIdentifier();
+            break;
+        case ACTION_REPORT_EXCEPTION:
+            _crash->reportException();
+            break;
+        case ACTION_LEAVE_BREAD_CRUMB:
+            _crash->leaveBreadcrumb();
+            break;
+    }
+    
+}
+
+
+void Views::onRECOperation(int idx)
+{
+	CCLOG("onRECOperation:%d", idx);
+	REC* _rec = REC::getInstance();
+	if (_rec == NULL) {
+		return;
+	}
+
+	switch (idx) {
+    	case ACTION_STARTRECORDING:
+    		_rec->setMetaData();
+    		_rec->startRecording();
+    		break;
+    	case ACTION_STOPRECORDING:
+    		CCLOG("isRecording:%s", _rec->isRecording()?"true":"false");
+    		_rec->stopRecording();
+    		break;
+    	case ACTION_SHAREVIDEO:
+    		_rec->share();
+    		break;
+    	case ACTION_PAUSECORDING:
+    		_rec->pauseRecording();
+    		break;
+    	case ACTION_RESUMECORDING:
+    		_rec->resumeRecording();
+    		break;
+    	case ACTION_SHOWTOOLBAR:
+    		_rec->showToolBar();
+    		break;
+    	case ACTION_HIDETOOLBAR:
+    		_rec->hideToolBar();
+    		break;
+    	case ACTION_SHOWVIDEOCENTER:
+    		_rec->showVideoCenter();
+    		break;
+    	case ACTION_ENTERPLATFORM:
+    		CCLOG("isAvailable:%s", _rec->isAvailable()?"true":"false");
+    		_rec->enterPlatform();
+    		break;
+	}
+
 }
 

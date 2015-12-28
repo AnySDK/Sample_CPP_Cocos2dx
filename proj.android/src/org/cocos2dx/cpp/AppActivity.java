@@ -83,4 +83,5 @@ public class AppActivity extends Cocos2dxActivity {
 		super.onRestart();
 		PluginWrapper.onRestart();
 	}
+	public static native void nativeInitPlugins () ;
 }

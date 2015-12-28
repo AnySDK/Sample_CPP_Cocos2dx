@@ -174,7 +174,7 @@ public class Cocos2dxRenderer implements GLSurfaceView.Renderer {
     public String getContentText() {
         return Cocos2dxRenderer.nativeGetContentText();
     }
-
+   
     // ===========================================================
     // Inner and Anonymous Classes
     // ===========================================================
