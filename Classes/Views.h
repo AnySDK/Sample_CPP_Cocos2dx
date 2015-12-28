@@ -20,6 +20,8 @@ private:
     void addCurrentView(int count, int lv, std::string arr[]);
     void hideCurItems();
     
+    void onRECOperation(int idx);
+    void onCrashOperation(int idx);
     void onAnalyticsOperation(int idx);
     void onPushOperation(int idx);
     void onSocialOperation(int idx);

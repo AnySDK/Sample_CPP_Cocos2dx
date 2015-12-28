@@ -20,7 +20,9 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/PluginChannel.cpp \
                    ../../Classes/Push.cpp \
                    ../../Classes/Share.cpp \
-                   ../../Classes/Social.cpp
+                   ../../Classes/Social.cpp \
+                   ../../Classes/REC.cpp   \
+                   ../../Classes/Crash.cpp
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes \
 					../protocols_c++_static/include \

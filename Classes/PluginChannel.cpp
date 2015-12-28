@@ -13,6 +13,7 @@
 #include "Analytics.h"
 #include "Push.h"
 #include "cocos2d.h"
+#include "PluginParam.h"
 
 // #include "PartViews.h"
 
@@ -74,9 +75,9 @@ void PluginChannel::loadPlugins()
      * oauthLoginServer参数是游戏服务提供的用来做登陆验证转发的接口地址。
      */
 
-    std::string appKey = "96418BB3-2DD9-4ADC-3FF9-E0F18857FD3E";
-    std::string appSecret = "5c11e736bb3bca886effb70886a85830";
-    std::string privateKey = "ACB121D6FF9D7CEAAACE3960ADF4A9CE";
+    std::string appKey = "D22AB625-CD4C-2167-D35C-C5A03E5896F5";
+    std::string appSecret = "8959c650440b6b051d6af588d7f965f3";
+    std::string privateKey = "BA26F2670407E0B8664DDA544026FA54";
     std::string oauthLoginServer = "http://oauth.anysdk.com/api/OauthLoginDemo/Login.php";
     
     AgentManager::getInstance()->init(appKey,appSecret,privateKey,oauthLoginServer);
