@@ -63,24 +63,6 @@
 + (void) pluginHttp:(NSMutableDictionary*)data target:(id)target sel:(SEL)sel;
 
 /**
- *
- * @Title: pluginDecode
- * @Description: decode source
- * @return destination
- * @throws
- */
-+ (NSString*) pluginDecode:(const char*)source;
-
-/**
- *
- * @Title: pluginEncode
- * @Description: encode source
- * @return destination
- * @throws
- */
-+ (NSString*) pluginEncode:(const char*)source;
-
-/**
  *  log output ，the lever is verbose
  *
  *  @param message the message about this log

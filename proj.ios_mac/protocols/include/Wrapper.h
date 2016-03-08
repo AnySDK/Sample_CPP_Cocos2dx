@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CocosRuntimeDelegate.h"
 
 @interface Wrapper : NSObject
 
@@ -94,7 +95,14 @@
 
 + (NSString*) replaceNotifyURL:(Class)class1 url:(NSString*)url;
 
+//about cocos runtime
++ (id<CocosRuntimeSDKDelegate>)getCocosRuntimeSDKProxy;
 
++ (void)setCocosRuntimeSDKProxy:(id<CocosRuntimeSDKDelegate>)runtimeProxy;
+
++ (int)getCocosRuntimeSDKVersionCode;
+
++ (void)setCocosRuntimeSDKVersionCode:(int)sdkVersionCode;
 
 
 @end

@@ -143,6 +143,10 @@ public:
     }
 
     static void outputLog(int type, const char* logTag, const char* pFormat, ...);
+
+    static void resetLogLevel();
+private:
+    static std::string _logLevel;
 };
 
 }} // namespace anysdk { namespace framework {
