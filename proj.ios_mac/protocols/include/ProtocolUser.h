@@ -84,8 +84,16 @@ public:
      @param server_id
      @param oauthLoginServer
     */
-     virtual  void login(std::string server_id, std::string oauthLoginServer = "") = 0 ;
 
+    CC_DEPRECATED_ATTRIBUTE virtual  void login(std::string server_id, std::string oauthLoginServer = "") = 0 ;
+
+    /**
+      @brief User login
+         	 	if the process of logining need to know  the parameters ,
+         	 	you can use the function
+      @param the parameters
+        */
+     virtual  void login(std::map<std::string, std::string> info) = 0 ;
 
     /**
      @brief Check whether the user logined or not

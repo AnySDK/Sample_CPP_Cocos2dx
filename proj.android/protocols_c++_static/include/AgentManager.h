@@ -16,6 +16,7 @@
 #include "ProtocolCrash.h"
 #include "ProtocolREC.h"
 #include "ProtocolCustom.h"
+#include "ProtocolAdTracking.h"
 #include <map>
 #include <string>
 namespace anysdk { namespace framework {
@@ -31,6 +32,7 @@ typedef enum {
     kPluginCrash = 128,/**< enum value is  the type of Crash. */
     kPluginCustom = 256,/**< enum value is  the type of Custom. */
     kPluginREC = 512,/**< enum value is  the type of REC. */
+    kPluginAdTracking = 1024,/**< enum value is  the type of AdTracking. */
 }Plugin_type;
 /**   
  *  @class  AgentManager  
@@ -148,6 +150,13 @@ public:
              else return value is null pointer.
     */
     ProtocolREC* getRECPlugin(){return _pREC;};
+    
+    /**
+     @brief Get AdTracking plugin
+     @return  if AdTracking plugin exist ,return value is AdTracking plugin.
+     else return value is null pointer.
+     */
+    ProtocolAdTracking* getAdTrackingPlugin(){return _pAdTracking;};
 
     /**
      @brief Get channel ID
@@ -181,51 +190,51 @@ public:
     @return boolean
     */
     bool isAnaylticsEnabled(){return bIsAnaylticsEnabled;};
-
-
-
-
-
+    
+    
+    void loadPlugin(const char* nodeName,int type);
 protected:
     void setDebugMode(bool flag);
     std::string getSupportPlugin();
-    void loadPlugin(const char* nodeName,int type);
     void release();
     
 
 private:
     AgentManager(void);
     
-    // Analytics plugins
+    // Analytics plugin
     ProtocolAnalytics* _pAnalytics;
 
-    // user plugins
+    // user plugin
     ProtocolUser* _pUser;
 
     // IAP plugins
     //    ProtocolIAP* _pIAP;
     std::map<std::string , ProtocolIAP*> _pluginsIAPMap;
 
-    // Share plugins
+    // Share plugin
     ProtocolShare* _pShare;
 
-    // Social plugins
+    // Social plugin
     ProtocolSocial* _pSocial;
 
-    // Ads plugins
+    // Ads plugin
     ProtocolAds* _pAds;
     
-    // Push plugins
+    // Push plugin
     ProtocolPush* _pPush;
 
-    // Crash plugins
+    // Crash plugin
     ProtocolCrash* _pCrash;
 
-    // Custom plugins
+    // Custom plugin
     ProtocolCustom* _pCustom;
 
-    // REC plugins
+    // REC plugin
     ProtocolREC* _pREC;
+    
+    // AdTracking plugin
+    ProtocolAdTracking* _pAdTracking;
 
     bool bIsAnaylticsEnabled;
 
