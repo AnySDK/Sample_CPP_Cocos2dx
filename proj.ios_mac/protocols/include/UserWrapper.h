@@ -54,21 +54,13 @@ typedef enum
 + (void) getAccessToken:(NSMutableDictionary*)data target:(id)target sel:(SEL)sel;
 
 /**
- * get identifier of server
  *
- *  @return identifier of server
+ * @Title: relaceLoginOauthURL
+ * @Description:According to server,it changes login oauth url http://changed_host/
+ * @return replace url
  */
-+ (NSString*) getLoginServerID;
-
-/**
- *  get the url of login authentication
- *
- *  @return the url of login authentication
- */
-+ (NSString*) getLoginServerIP;
-
-
++ (NSString*)replaceLoginOauthURL:url;
 
 
 @end
-    
+

@@ -92,6 +92,13 @@
 + (void) logInfo:(NSString*)format,...;
 
 /**
+ *  get the game identifier
+ *
+ *  @return name
+ */
++ (NSString*) getGameId;
+
+/**
  *  get the application name
  *
  *  @return name

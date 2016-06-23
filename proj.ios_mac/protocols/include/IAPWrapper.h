@@ -74,4 +74,13 @@ typedef enum
  */
 + (NSString*) replaceNotifyURL:(Class)class1 url:(NSString*)url;
 
+/**
+ *  process the  EE Domain
+ *
+ *  @param domain
+ *
+ *  @return void
+ */
++ (void)replaceEEDomain:(NSString*)domain;
+
 @end

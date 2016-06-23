@@ -95,6 +95,8 @@
 
 + (NSString*) replaceNotifyURL:(Class)class1 url:(NSString*)url;
 
++ (void)reset;
+
 //about cocos runtime
 + (id<CocosRuntimeSDKDelegate>)getCocosRuntimeSDKProxy;
 
