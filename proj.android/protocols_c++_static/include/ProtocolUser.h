@@ -32,6 +32,8 @@ typedef enum
     kAccountSwitchSuccess,/**< enum value is callback of succeeding in switching account. */
     kAccountSwitchFail,/**< enum value is callback of failing to switch account. */
     kOpenShop,/**< enum value is callback of open the shop. */
+    kAccountSwitchCancel,/**< enum value is callback of canceling to switch account. */
+    kGameExitPage,/**< enum value is callback of no channel exit page. */
     kUserExtension = 50000 /**< enum value is  extension code . */
 
 

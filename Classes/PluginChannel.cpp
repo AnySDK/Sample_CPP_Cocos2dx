@@ -82,9 +82,12 @@ void PluginChannel::loadPlugins()
     
     AgentManager::getInstance()->init(appKey,appSecret,privateKey,oauthLoginServer);
     
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     //使用框架中代理类进行插件初始化
+    //Android建议在onCreate里调用PluginWrapper.loadAllPlugins();来进行插件初始化
     AgentManager::getInstance()->loadAllPlugins();
-    
+#endif  
+  
     //对用户系统设置监听类
     if(AgentManager::getInstance()->getUserPlugin())
     {
