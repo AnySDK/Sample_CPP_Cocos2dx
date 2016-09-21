@@ -30,6 +30,7 @@ import org.cocos2dx.lib.Cocos2dxActivity;
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import com.anysdk.framework.PluginWrapper;
@@ -40,48 +41,80 @@ public class AppActivity extends Cocos2dxActivity {
         super.onCreate(savedState);
         PluginWrapper.init(this); // for plugins
         PluginWrapper.setGLSurfaceView(Cocos2dxGLSurfaceView.getInstance());
+        PluginWrapper.loadAllPlugins();
     }
         
     @Override
 	protected void onDestroy() {
+    	PluginWrapper.onDestroy();
 		super.onDestroy();
-		PluginWrapper.onDestroy();
 	}
 
 	@Override
 	protected void onPause() {
-		super.onPause();
 		PluginWrapper.onPause();
+		super.onPause();
 	}
 
 	@Override
 	protected void onResume() {
-		super.onResume();
 		PluginWrapper.onResume();
+		super.onResume();
 	}
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data);
 		PluginWrapper.onActivityResult(requestCode, resultCode, data);
+		super.onActivityResult(requestCode, resultCode, data);
 	}
 
 	@Override
 	protected void onNewIntent(Intent intent) {
-		super.onNewIntent(intent);
 		PluginWrapper.onNewIntent(intent);
+		super.onNewIntent(intent);
 	}
 
 	@Override
 	protected void onStop() {
-		super.onStop();
 		PluginWrapper.onStop();
+		super.onStop();
 	}
 
 	@Override
 	protected void onRestart() {
-		super.onRestart();
 		PluginWrapper.onRestart();
+		super.onRestart();
 	}
+	
+	@Override
+	protected void onStart() {
+		PluginWrapper.onStart();
+		super.onStart();
+	}
+	
+	@Override
+	public void onBackPressed() {
+		PluginWrapper.onBackPressed();
+        super.onBackPressed();
+    }
+	
+    @Override
+	public void onConfigurationChanged(Configuration newConfig) {
+    	PluginWrapper.onConfigurationChanged(newConfig);
+        super.onConfigurationChanged(newConfig);
+    }
+    
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+    	PluginWrapper.onRestoreInstanceState(savedInstanceState);
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+    
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+    	PluginWrapper.onSaveInstanceState(outState);
+        super.onSaveInstanceState(outState);
+    }
+    
 	public static native void nativeInitPlugins () ;
 }

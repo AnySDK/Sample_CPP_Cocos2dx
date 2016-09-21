@@ -28,6 +28,9 @@ typedef enum
     kNetworkError,              /**< enum the callback of Network error at center. */
     kUnknownError,              /**< enum the callback of Unknown error. */
     kOfferWallOnPointsChanged,   /**< enum the callback of Changing the point of offerwall. */
+    kRewardedVideoWithReward,/**< enum the callback of receiving the reward of rewardedvideo. */
+    kInAppPurchaseFinished,/**< enum the callback of finishing IAP ad. */
+    kAdsClicked,/**< enum the callback of the advertisement clicked. */
     kAdsExtension = 40000 /**< enum value is  extension code . */
 } AdsResultCode;
 /** @brief AdsPos enum, with inline docs */
@@ -46,6 +49,9 @@ typedef enum {
 	AD_TYPE_FULLSCREEN,/**< enum value is fullscreen ads . */
 	AD_TYPE_MOREAPP,/**< enum value is moreapp ads . */
 	AD_TYPE_OFFERWALL,/**< enum value is offerwall ads . */
+	AD_TYPE_REWARDEDVIDEO,/**< enum value is rewarded video ads . */
+	AD_TYPE_NATIVEEXPRESS,/**< enum value is Native express  ads . */
+	AD_TYPE_NATIVEADVANCED,/**< enum value is Native advanced  ads . */
 } AdsType;
 
 class ProtocolAds;

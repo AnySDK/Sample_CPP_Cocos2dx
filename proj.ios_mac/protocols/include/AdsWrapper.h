@@ -22,6 +22,9 @@ typedef enum
     RESULT_CODE_NetworkError, // Network error
     RESULT_CODE_UnknownError, // Unknown error
     RESULT_CODE_OfferWallOnPointsChanged, // Change the point of offerwall
+    RESULT_CODE_RewardedVideoWithReward,//the callback of receiving the reward of rewardedvideo
+    RESULT_CODE_InAppPurchaseFinished,////the callback of finishing IAP ad
+    RESULT_CODE_AdsClicked, //the callback of the advertisement clicked
     RESULT_CODE_ADSEXTENSION = 40000  //ads extension code
     
 }AD_RET_CODE;
@@ -31,8 +34,10 @@ typedef enum
     AD_TYPE_BANNER = 0,/**< enum value is banner ads . */
     AD_TYPE_FULLSCREEN,/**< enum value is fullscreen ads . */
     AD_TYPE_MOREAPP,/**< enum value is moreapp ads . */
-    AD_TYPE_OFFERWALL /**< enum value is offerwall ads . */
-    
+    AD_TYPE_OFFERWALL, /**< enum value is offerwall ads . */
+    AD_TYPE_REWARDEDVIDEO,/**< enum value is rewarded video ads . */
+    AD_TYPE_NATIVEEXPRESS,/**< enum value is Native express  ads . */
+    AD_TYPE_NATIVEADVANCED/**< enum value is Native advanced  ads . */
 } ADS_TYPE;
 typedef enum
 {
