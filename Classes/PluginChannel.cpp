@@ -108,7 +108,7 @@ void PluginChannel::loadPlugins()
     Analytics::getInstance()->logTimedEventBegin("Load");
     Push::getInstance()->startPush();
     
-    _iapIPhone = getIAPIphone();
+    _iapAppstore = getIAPAppstore();
 }
 
 void PluginChannel::unloadPlugins()
@@ -199,14 +199,14 @@ void PluginChannel::payMode(std::string id)
     CCLOG("444");
 }
 
-ProtocolIAP* PluginChannel::getIAPIphone()
+ProtocolIAP* PluginChannel::getIAPAppstore()
 {
     if(_pluginsIAPMap)
     {
         std::map<std::string , ProtocolIAP*>::iterator it = _pluginsIAPMap->begin();
         for (; it != _pluginsIAPMap->end(); it++) {
             printf("it->first: %s----\n", it->first.c_str());
-            if (it->first == IAP_IPHONE_ID) {
+            if (it->first == APPSTORE_PLUGIN_ID) {
                 return it->second;
             }
         }
@@ -216,12 +216,13 @@ ProtocolIAP* PluginChannel::getIAPIphone()
 
 void PluginChannel::requestProducts()
 {
+    // AppStroe才有的接口，也可以不调用requestProducts直接调用payForProduct 
     printf("payRequest\n");
-    if ( NULL!= _iapIPhone ) {
+    if ( NULL!= _iapAppstore ) {
         PluginParam param1("PD_10005");
         PluginParam param2("PD_10004");
         PluginParam param3("PD_10003");
-        _iapIPhone->callFuncWithParam("requestProducts", &param1, &param2, &param3, NULL);
+        _iapAppstore->callFuncWithParam("requestProducts", &param1, &param2, &param3, NULL);
     }
     else{
         printf("iap iphone isn't find!\n");
@@ -229,39 +230,26 @@ void PluginChannel::requestProducts()
 }
 
 void PluginChannel::pay()
-{
-    if ( NULL != _iapIPhone ) {
-        _iapIPhone->payForProduct(_myProducts["1"]);
-        return;
-    }
-    
+{   
     std::map<std::string , ProtocolIAP*>::iterator it = _pluginsIAPMap->begin();
     if(_pluginsIAPMap)
     {
+        productInfo["Product_Id"] = "1";
+        productInfo["Product_Name"] = "10元宝";
         productInfo["Product_Price"] = "1";
-        if(AgentManager::getInstance()->getChannelId()=="000016" || AgentManager::getInstance()->getChannelId()=="000009"|| AgentManager::getInstance()->getChannelId()=="000349"){
-            productInfo["Product_Id"] = "1";
-        }
-        else
-            if(AgentManager::getInstance()->getChannelId()=="000056" ){//联通，传计费点
-                productInfo["Product_Id"] = "130201102727";
-            }
-            else
-                if (AgentManager::getInstance()->getChannelId()=="000266") {//移动基地，传计费点后三位
-                    productInfo["Product_Id"] = "001";
-                }
-                else
-                {
-                    productInfo["Product_Id"] = "monthly";
-                }
-        
-        productInfo["Product_Name"] = "豌豆荚测试a1";
-        productInfo["Server_Id"] = "13";
         productInfo["Product_Count"] = "1";
-        productInfo["Role_Id"] = "1";
-        productInfo["Role_Name"] = "1";
+        productInfo["Product_Desc"] = "gold";
+        productInfo["Coin_Name"] = "元宝";
+        productInfo["Coin_Rate"] = "10";
+        productInfo["Role_Id"] = "123456";
+        productInfo["Role_Name"] = "test";
         productInfo["Role_Grade"] = "1";
         productInfo["Role_Balance"] = "1";
+        productInfo["Vip_Level"] = "1";
+        productInfo["Party_Name"] = "test";
+        productInfo["Server_Id"] = "1";
+        productInfo["Server_Name"] = "test";
+        productInfo["EXT"] = "test";
         Analytics::getInstance()->logEvent("pay", productInfo);
         if(_pluginsIAPMap->size() == 1)
         {
@@ -411,13 +399,17 @@ void PluginChannel::submitLoginGameRole()
         if(PluginChannel::getInstance()->isFunctionSupported("submitLoginGameRole"))
         {
             StringMap userInfo;
-            userInfo["roleId"] = "ceshi : 123456";
-            userInfo["roleName"] = "ceshi : test";
-            userInfo["roleLevel"] = "ceshi : 10";
-            userInfo["zoneId"] = "ceshi : 123";
-            userInfo["zoneName"] = "ceshi : test";
-            userInfo["dataType"] = "ceshi : 1";
-            userInfo["ext"] = "ceshi : login";
+            userInfo["dataType"] = "1";
+            userInfo["roleId"] = "123456";
+            userInfo["roleName"] = "test";
+            userInfo["roleLevel"] = "1";
+            userInfo["zoneId"] = "1";
+            userInfo["zoneName"] = "test";
+            userInfo["balance"] = "60";
+            userInfo["partyName"] = "test";
+            userInfo["vipLevel"] = "1";
+            userInfo["roleCTime"] = "1480318110";
+            userInfo["roleLevelMTime"] = "-1";
             PluginParam data(userInfo);
             AgentManager::getInstance()->getUserPlugin()->callFuncWithParam("submitLoginGameRole",&data,NULL);
         }
